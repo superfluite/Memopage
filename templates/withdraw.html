@@ -1,0 +1,10 @@
+{%extends "layout.html"%}
+{%block body%}
+<div class=memobox>
+		Do you really want to withdraw??
+	<div class=writebox>
+		<input type="button" name="yes" value="Yes :P" onclick="location.href='{{url_for('delaccount')}}'">
+		<input type="button" name="no" value="No :D" onclick="location.href='{{url_for('main')}}'">
+	</div>
+</div>
+{%endblock%}

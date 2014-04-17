@@ -1,0 +1,10 @@
+Flask==0.10.1
+Flask-Login==0.2.10
+Flask-SQLAlchemy==1.0
+SQLAlchemy==0.9.4
+gunicorn==18.0
+itsdangerous==0.24
+jinja2==2.7.2
+markupsafe==0.19
+virtualenv==1.11.4
+werkzeug==0.9.4

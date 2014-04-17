@@ -1,0 +1,29 @@
+<!doctype html>
+<title>Memo</title>
+<link rel=stylesheet type=text/css href="{{url_for('static',filename='style1.css')}}">
+<div class=userbar align=center>
+	{%if not session.logged_in%}
+	<a href="{{url_for('login')}}">login!</a> or <a href="{{url_for('signup')}}">sign up!</a>
+	<div class=title>
+		<a href="{{url_for('index')}}">MEMOPAGE</a>
+	{%else%}
+	<div class=title>
+		<a href="{{url_for('main')}}">MEMOPAGE</a>
+	{%endif%}
+	</div>
+	{%if session.logged_in%}
+		<a href="{{url_for('logout')}}">logout?</a>
+		<div align=right><a href="{{url_for('withdraw')}}" style="text-align:right">Withdraw</a></div>
+	{%endif%}
+	{%block body%}{%endblock%}
+</div>
+{%for message in get_flashed_messages()%}
+<div class=flash>
+	{{message}}
+</div>
+{%endfor%}
+{%if session.logged_in%}
+<div class=memobutton>
+	<a href="{{url_for('writememo')}}">M E M O !</a>
+</div>
+{%endif%}

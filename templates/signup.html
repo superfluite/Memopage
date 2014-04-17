@@ -1,0 +1,16 @@
+{%extends "layout.html"%}
+{%block body%}
+<div class=memobox>
+	Sign up!
+	{%if error%}<p><strong>Error:</strong>{{error}}{%endif%}
+	<div class=writebox>
+		<form action="{{url_for('signup')}}" method=post align=left>
+			<dl>
+				<dt>ID:	<input type=text name=userid>
+				<dt>PW:	<input type=password name=userpw>
+				<dt><input type=submit value=Confirm>
+			</dl>
+		</form>
+	</div>
+</div>
+{%endblock%}
