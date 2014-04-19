@@ -1,0 +1,12 @@
+{%extends "layout.html"%}
+{%block body%}
+<div class=memobox>
+	Edit your memo!
+	<div class=writebox>
+		<form action="{{fix_memo.id}}" method='post' align=left>
+				<textarea id="memo" name=text rows=20 style="resize:none;width:100%">{{fix_memo.text}}</textarea>
+				<input type=submit value=Edit><input type=reset value=Reset>
+		</form>
+	</div>	
+</div>
+{%endblock%}

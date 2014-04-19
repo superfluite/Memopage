@@ -1,0 +1,12 @@
+{%extends "layout.html"%}
+{%block body%}
+<div class=memobox>
+	Write your memo!
+	<div class=writebox>
+		<form action="{{url_for('writememo')}}" method='post' align=left>
+				<textarea id="memo" name=text rows=20 style="resize:none;width:100%"></textarea>
+				<input type=submit value=Save><input type=reset value=Reset>
+		</form>
+	</div>	
+</div>
+{%endblock%}

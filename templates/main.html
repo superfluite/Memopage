@@ -1,0 +1,21 @@
+{%extends "layout.html"%}
+{%block body%}
+{%if session.logged_in %}
+	{%for memo in memos%}
+		<div class=memobox>
+			<div class=writebox align=left>
+			{{memo.text}}
+			</div>
+			<div class=memoedit>
+				<a href="editmemo/{{memo.id}}">Edit!</a>
+				<a href="delmemo/{{memo.id}}">Delete!</a>
+			</div>
+		</div>
+	{%else%}
+		<div class=memobox>
+			<li><em>Oh, there is no memo! Write your memo!</em>
+		</div>
+	{%endfor%}
+{%else%}
+{%endif%}
+{%endblock%}
