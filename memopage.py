@@ -2,7 +2,7 @@
 from flask import Flask,request,session,g,redirect,url_for,abort,render_template,flash
 from flask.ext.login import LoginManager,login_user,logout_user,login_required,session,current_user
 from config import SECRET_KEY
-from database import db_session, deletes
+from database import db_session
 from sqlalchemy import desc
 from models import *
 import os
@@ -112,8 +112,8 @@ def withdraw():
 @app.route('/delaccount')
 @login_required
 def delaccount():
-	poor_memo=db_session.query(Memo).filter_by(writerid=current_user.id).all()
-	db_session.deletes(poor_memo)
+	poor_memo=db_session.query(Memo).delete(writerid=current_user.id)
+	poor_memo.execute()
 	poor_user=db_session.query(User).filter_by(id=current_user.id).first()
 	session.pop('logged_in',None)
 	logout_user()
