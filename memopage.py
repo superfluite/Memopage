@@ -112,11 +112,14 @@ def withdraw():
 @app.route('/delaccount')
 @login_required
 def delaccount():
+	poor_memo=db_session.query(Memo).filter_by(writerid=current_user.id).all()
+	db_session.delete(poor_memo)
+	db_session.commit()
 	poor_user=db_session.query(User).filter_by(id=current_user.id).first()
-	session.pop('logged_in',None)
-	logout_user()
 	db_session.delete(poor_user)
 	db_session.commit()
+	session.pop('logged_in',None)
+	logout_user()
 	return redirect(url_for('index'))
 	
 @app.teardown_appcontext
