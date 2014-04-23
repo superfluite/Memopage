@@ -113,11 +113,14 @@ def withdraw():
 @login_required
 def delaccount():
 <<<<<<< HEAD
+<<<<<<< HEAD
 	poor_memo=db_session.query(Memo).filter_by(writerid=current_user.id).first()
 	while poor_memo!=None:
 		db_session.delete(poor_memo)
 		db_session.commit()
 		poor_memo=db_session.query(Memo).filter_by(writerid=current_user.id).first()
+=======
+>>>>>>> 2f11567b6df085a1cf7863c084a82ed282dc04a9
 =======
 >>>>>>> 2f11567b6df085a1cf7863c084a82ed282dc04a9
 	poor_user=db_session.query(User).filter_by(id=current_user.id).first()
