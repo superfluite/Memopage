@@ -1,21 +1,31 @@
 {%extends "layout.html"%}
 {%block body%}
+<div class="page-header"></div>
+<div class="container">
 {%if session.logged_in %}
 	{%for memo in memos%}
-		<div class=memobox>l
-			<div class=writebox align=left>
-			{{memo.text}}
+	<div class="row">
+		<div class="col-md-3"></div>
+		<div class="col-md-6" style="border:2px solid #eee">
+			<div>
+	{{memo.text}}
 			</div>
-			<div class=memoedit>
+			<div align="right">
 				<a href="editmemo/{{memo.id}}">Edit!</a>
 				<a href="delmemo/{{memo.id}}">Delete!</a>
 			</div>
-		</div>
-	{%else%}
-		<div class=memobox>
+			</div>
+		<div class="col-md-3"></div>
+	</div>
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-8"><hr></div>
+		<div class="col-md-2"></div>
+	</div>
+{%else%}
 			<li><em>Oh, there is no memo! Write your memo!</em>
-		</div>
-	{%endfor%}
+{%endfor%}
 {%else%}
 {%endif%}
+</div>
 {%endblock%}

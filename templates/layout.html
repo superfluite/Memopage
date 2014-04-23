@@ -7,6 +7,7 @@
 			<link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.css')}}">
 			<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/style1.css')}}">
 	</head>
+	<body>
 		<div class="navbar navbar-default navbar-fixed-top" align="center">
 			<div class="container">
 {%if not session.logged_in%}
@@ -34,6 +35,8 @@
 {%endif%}
 			</div>
 		</div>
+
+	</body>
 {%block body%}{%endblock%}
 {%for message in get_flashed_messages()%}
     <div class=flash>
