@@ -112,9 +112,10 @@ def withdraw():
 @app.route('/delaccount')
 @login_required
 def delaccount():
-	memo_table=Table('Memo',metadata,autoload=True)
-	poor_memo=memo_table.delete(memo_table.writerid=current_user.id)
-	poor_memo.execute()
+	poor_memo=db_session.query(Memo).filter_by(writerid=current_user.id).first()
+	while poor_memo!=None:
+		db_session.delete(poor_memo)
+		db_session.query(Memo).filter_by(writerid=current_user.id).first()
 	poor_user=db_session.query(User).filter_by(id=current_user.id).first()
 	session.pop('logged_in',None)
 	logout_user()
