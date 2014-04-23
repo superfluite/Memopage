@@ -112,7 +112,7 @@ def withdraw():
 @app.route('/delaccount')
 @login_required
 def delaccount():
-	wtf=db_session.query(Memo).filter_by(writerid=current_user.id).first()
+	wtf=db_session.query(Memo).filter_by(writerid=current_user.id)
 	db_session.delete(wtf)
 	poor_user=db_session.query(User).filter_by(id=current_user.id).first()
 	session.pop('logged_in',None)
