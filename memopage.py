@@ -3,7 +3,7 @@ from flask import Flask,request,session,g,redirect,url_for,abort,render_template
 from flask.ext.login import LoginManager,login_user,logout_user,login_required,session,current_user
 from config import SECRET_KEY
 from database import db_session
-from sqlalchemy import desc
+from sqlalchemy import desc, deletes
 from models import *
 import os
 import sqlite3
