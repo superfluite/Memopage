@@ -116,10 +116,10 @@ def delaccount():
 	db_session.delete(poor_memo)
 	db_session.commit()
 	poor_user=db_session.query(User).filter_by(id=current_user.id).first()
-	db_session.delete(poor_user)
-	db_session.commit()
 	session.pop('logged_in',None)
 	logout_user()
+	db_session.delete(poor_user)
+	db_session.commit()
 	return redirect(url_for('index'))
 	
 @app.teardown_appcontext
