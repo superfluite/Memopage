@@ -1,0 +1,9 @@
+body	{margin:0}
+
+.userbar	{padding:1em;height:3em;background:skyblue}
+.title		{width:20em;text-align:center;font-size:1.5em}
+.memobox	{margin:4em auto;width:30%;background: white;border: 3px solid skyblue}
+.writebox	{width:80%;margin:1.5em auto}
+.flash		{background:green;height:1.6em;font-size:0.9em;text-align:center;font-weight:bold;}
+.memobutton	{margin:0.5em auto;width:20em;height:1.2em;text-align:center;background:skyblue}
+.memoedit	{margin:0.5em auto;width:80%;height:1em;text-align:right}
