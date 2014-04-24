@@ -16,6 +16,7 @@ class Memo(Base):
 	id=Column(Integer,primary_key=True)
 	text=Column(String)
 	writerid=Column(Integer)
+	writetime=Column(String)
 	
 	def __repr__(self):
 		return '<Memo %s>' % (self.id)
