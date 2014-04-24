@@ -1,10 +1,17 @@
 {%extends "layout.html"%}
 {%block body%}
-<div class=memobox>
-		Do you really want to withdraw??
-	<div class=writebox>
-		<input type="button" name="yes" value="Yes :P" onclick="location.href='{{url_for('delaccount')}}'">
-		<input type="button" name="no" value="No :D" onclick="location.href='{{url_for('main')}}'">
+<div class="container" align="center">
+	<div class="row">
+		<div class="col-md-3"></div>
+		<div class="col-md-6" style="border: 2px solid #eee">
+			<br>
+			<p><strong>Do you really want to withdraw??</strong></p>
+			<p><strong>If you delete your accout, your memos will delete too!</strong></p>
+			<input class="btn btn-warning" type="button" name="yes" value="Yes :P" onclick="location.href='{{url_for('delaccount')}}'">
+			<input class="btn btn-primary" type="button" name="no" value="No :D" onclick="location.href='{{url_for('main')}}'">
+			<br><br>
+		</div>
+		<div class="col-md-3"></div>
 	</div>
 </div>
 {%endblock%}

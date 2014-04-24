@@ -34,20 +34,29 @@
 					</div>
 {%endif%}
 			</div>
+			
 		</div>
-
+		<div class="page-header"></div>
+{%for message in get_flashed_messages()%}
+    <div class="alert alert-info" align="center">
+		<strong>{{message}}</strong>
+    </div>
+{%endfor%}		
+{%if session.logged_in%}
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3"></div>
+				<div class="col-md-6" align="center">
+					<input type="button" class="btn btn-lg btn-primary" name="memo" value="M  E  M  O  !" onclick="location.href='{{url_for('writememo')}}'">
+				</div>
+				<div class="col-md-3"></div>
+			</div>
+		</div>
+{%endif%}		
+		<br>
 	</body>
 {%block body%}{%endblock%}
-{%for message in get_flashed_messages()%}
-    <div class=flash>
-{{message}}
-    </div>
-{%endfor%}
-{%if session.logged_in%}
-    <div class=memobutton>
-	  <a href="{{url_for('writememo')}}">M E M O !</a>
-    </div>
-{%endif%}
+
 
     <!-- jQuery (need for javascript plugin of bootstrap) -->
     <script src="//code.jquery.com/jquery.js"></script>
