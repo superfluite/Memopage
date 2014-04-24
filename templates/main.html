@@ -7,10 +7,9 @@
 		<div class="col-md-3"></div>
 		<div class="col-md-6" style="border:2px solid #eee">
 			<br>
-			<div>
-	{{memo.text}}
-			</div>
+			<div>{{memo.text}}</div>
 			<div align="right">
+				{{memo.writetime}}
 				<input type="button" class="btn btn-primary" name="edit" value="Edit" onclick="location.href='editmemo/{{memo.id}}'">
 				<input type="button" class="btn btn-warning" name="del" value="Delete" onclick="location.href='delmemo/{{memo.id}}'">
 			</div>

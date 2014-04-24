@@ -7,12 +7,14 @@ from sqlalchemy import desc
 from models import *
 import os
 import sqlite3
+import time
 
 app=Flask(__name__)
 login_manager=LoginManager()
 app.secret_key=SECRET_KEY
 login_manager.init_app(app)
 login_manager.login_view="login"
+now=time.localtime()
 
 @login_manager.user_loader
 def load_user(id):
@@ -72,11 +74,12 @@ def signup():
 def writememo():
 	error=None
 	if request.method=='POST':
+		time="%04d-%02d-%02d %02d:%02d:%02d" % (now.tm_year,now.tm_mon,now.tm_mday,now.tm_hour,now.tm_min,now.tm_sec)
 		memo_check=request.form['text']
 		if memo_check==None:
 			error='This is blank memo! You have to write something!'
 		else:
-			new_memo=Memo(text=request.form['text'],writerid=current_user.id)
+			new_memo=Memo(text=request.form['text'],writerid=current_user.id,writetime=time,important=0)
 			db_session.add(new_memo)
 			db_session.commit()
 			return redirect(url_for('main'))
@@ -95,11 +98,13 @@ def delmemo(num):
 def editmemo(num):
 	fix_memo=db_session.query(Memo).filter_by(id=num).first()
 	if request.method=='POST':
+		time="%04d-%02d-%02d %02d:%02d:%02d" % (now.tm_year,now.tm_mon,now.tm_mday,now.tm_hour,now.tm_min,now.tm_sec)
 		memo_check=request.form['text']
 		if memo_check==None:
 			error='This is blank memo! You have to write something!'
 		else:
 			fix_memo.text=request.form['text']
+			fix_memo.writetime=time
 			db_session.commit()
 			return redirect(url_for('main'))
 	return render_template('editmemo.html',fix_memo=fix_memo)
