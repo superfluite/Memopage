@@ -79,7 +79,12 @@ def writememo():
 		if memo_check==None:
 			error='This is blank memo! You have to write something!'
 		else:
+<<<<<<< HEAD
 			new_memo=Memo(text=request.form['text'],writerid=current_user.id,writetime=time,important=0)
+=======
+			time="%04d-%02d-%02d %02d:%02d:%02d" % (now.tm_year,now.tm_mon,now.tm_mday,now.tm_hour,now.tm_min,now.tm_sec)
+			new_memo=Memo(text=request.form['text'],writerid=current_user.id,writetime=time)
+>>>>>>> fixbug
 			db_session.add(new_memo)
 			db_session.commit()
 			return redirect(url_for('main'))
@@ -103,6 +108,7 @@ def editmemo(num):
 		if memo_check==None:
 			error='This is blank memo! You have to write something!'
 		else:
+			time="%04d-%02d-%02d %02d:%02d:%02d" % (now.tm_year,now.tm_mon,now.tm_mday,now.tm_hour,now.tm_min,now.tm_sec)
 			fix_memo.text=request.form['text']
 			fix_memo.writetime=time
 			db_session.commit()

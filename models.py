@@ -17,7 +17,6 @@ class Memo(Base):
 	text=Column(String)
 	writerid=Column(Integer)
 	writetime=Column(String)
-	important=Column(Integer)
 	
 	def __repr__(self):
 		return '<Memo %s>' % (self.id)
