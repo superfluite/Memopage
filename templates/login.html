@@ -1,16 +1,28 @@
 {%extends "layout.html"%}
 {%block body%}
-<div class=memobox>
-	Log in!
-	{%if error%}<p><strong>Error:</strong>{{error}}{%endif%}
-	<div class=writebox>
-		<form action="{{url_for('login')}}" method=post align=left>
-			<dl>
-				<dt>ID:	<input type=text name=userid>
-				<dt>PW:	<input type=password name=userpw>
-				<dt><input type=submit value=Login>
-			</dl>
-		</form>
+<div class="container" align="center">
+	<div class="row">
+		<div class="col-md-3"></div>
+		<div class="col-md-6" style="border: 2px solid #eee">
+			<br>
+			<p><strong>Log in!</strong></p>
+			{%if error%}<p><strong>Error:</strong>{{error}}{%endif%}
+			<div class="row">
+				<div class="col-md-3"></div>
+				<div class="col-md-6">
+					<form action="{{url_for('login')}}" method="post" align="left">
+						<dl>
+							<dt>ID	<input type="text" name="userid" class="form-control">
+							<dt>PW	<input type="password" name="userpw" class="form-control">
+						</dl>
+						<input type="submit" value="Login" class="btn btn-success">
+					</form>
+				</div>
+				<div class="col-md-3"></div>
+			</div>
+			<br>
+		</div>
+		<div class="col-md-3"></div>
 	</div>
 </div>
 {%endblock%}

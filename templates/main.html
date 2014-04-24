@@ -1,21 +1,36 @@
 {%extends "layout.html"%}
 {%block body%}
+<div class="container">
 {%if session.logged_in %}
 	{%for memo in memos%}
-		<div class=memobox>
-			<div class=writebox align=left>
-			{{memo.text}}
+	<div class="row">
+		<div class="col-md-3"></div>
+		<div class="col-md-6" style="border:2px solid #eee">
+			<br>
+			<div>
+	{{memo.text}}
 			</div>
-			<div class=memoedit>
-				<a href="editmemo/{{memo.id}}">Edit!</a>
-				<a href="delmemo/{{memo.id}}">Delete!</a>
+			<div align="right">
+				<input type="button" class="btn btn-primary" name="edit" value="Edit" onclick="location.href='editmemo/{{memo.id}}'">
+				<input type="button" class="btn btn-warning" name="del" value="Delete" onclick="location.href='delmemo/{{memo.id}}'">
 			</div>
+			<br>
 		</div>
-	{%else%}
-		<div class=memobox>
-			<li><em>Oh, there is no memo! Write your memo!</em>
-		</div>
-	{%endfor%}
+		<div class="col-md-3"></div>
+	</div>
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-8"><hr></div>
+		<div class="col-md-2"></div>
+	</div>
+{%else%}
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-8" align="center">Oh, there is no memo! Write your memo!</div>
+		<div class="col-md-2"></div>
+	</div>
+{%endfor%}
 {%else%}
 {%endif%}
+</div>
 {%endblock%}

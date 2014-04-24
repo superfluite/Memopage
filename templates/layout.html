@@ -1,29 +1,67 @@
-<!doctype html>
-<title>Memo</title>
-<link rel=stylesheet type=text/css href="{{url_for('static',filename='style1.css')}}">
-<div class=userbar align=center>
-	{%if not session.logged_in%}
-	<a href="{{url_for('login')}}">login!</a> or <a href="{{url_for('signup')}}">sign up!</a>
-	<div class=title>
-		<a href="{{url_for('index')}}">MEMOPAGE</a>
-	{%else%}
-	<div class=title>
-		<a href="{{url_for('main')}}">MEMOPAGE</a>
-	{%endif%}
-	</div>
-	{%if session.logged_in%}
-		<a href="{{url_for('logout')}}">logout?</a>
-		<div align=right><a href="{{url_for('withdraw')}}" style="text-align:right">Withdraw</a></div>
-	{%endif%}
-	{%block body%}{%endblock%}
-</div>
-{%for message in get_flashed_messages()%}
-<div class=flash>
-	{{message}}
-</div>
-{%endfor%}
-{%if session.logged_in%}
-<div class=memobutton>
-	<a href="{{url_for('writememo')}}">M E M O !</a>
-</div>
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Memo</title>
+			<meta name="viewport" content="width=device-width, initial scale=1.0">
+			<!--Bootstrap-->
+			<link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.css')}}">
+			<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/style1.css')}}">
+	</head>
+	<body>
+		<div class="navbar navbar-default navbar-fixed-top" align="center">
+			<div class="container">
+{%if not session.logged_in%}
+					<div class="navbar-header">
+						<a class="navbar-brand" href="{{url_for('index')}}">MEMOPAGE</a>
+					</div>
+					<div class="navbar-collapse collapse">
+						<ul class="nav navbar-nav">
+							<li><a href="{{url_for('login')}}">Log in!</a></li>
+							<li><a href="{{url_for('signup')}}">Sign up!</a></li>
+						</ul>
+					</div>
+{%else%}
+					<div class="navbar-header">
+						<a class="navbar-brand" href="{{url_for('main')}}">MEMOPAGE</a>
+					</div>
+					<div class="navbar-collapse collapse">
+						<ul class="nav navbar-nav">
+							<li><a href="{{url_for('logout')}}">Log out!</a></li>
+						</ul>
+						<ul class="nav navbar-nav navbar-right">
+							<li><a href="{{url_for('withdraw')}}">Withdraw?</a></li>
+						</ul>
+					</div>
 {%endif%}
+			</div>
+			
+		</div>
+		<div class="page-header"></div>
+{%for message in get_flashed_messages()%}
+    <div class="alert alert-info" align="center">
+		<strong>{{message}}</strong>
+    </div>
+{%endfor%}		
+{%if session.logged_in%}
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3"></div>
+				<div class="col-md-6" align="center">
+					<input type="button" class="btn btn-lg btn-primary" name="memo" value="M  E  M  O  !" onclick="location.href='{{url_for('writememo')}}'">
+				</div>
+				<div class="col-md-3"></div>
+			</div>
+		</div>
+{%endif%}		
+		<br>
+	</body>
+{%block body%}{%endblock%}
+
+
+    <!-- jQuery (need for javascript plugin of bootstrap) -->
+    <script src="//code.jquery.com/jquery.js"></script>
+    <!-- include plugin that you need -->
+    <script src="{{url_for('static',filename='js/bootstrap.min.js')}}"></script>
+    <!-- use Respond.js to possible active function in IE8  (https://github.com/scottjehl/Respond) -->
+    <script src="{{url_for('static',filename='js/respond.js')}}"></script>
+</html>

@@ -1,21 +1,33 @@
 {%extends "layout.html"%}
 {%block body%}
 {%if not session.logged_in%}
-<div class=memobox>
-	<div class=writebox>
-		<p>To use MEMOPAGE, You have to Log in!</p>
-		<p><a href="{{url_for('login')}}">Login! :D</a></p>
-		<p>If you don't have account, then Sign up now!</p>
-		<p><a href="{{url_for('signup')}}">Sign up! XD</a></p>
+<div class="container" align="center">
+	<div class="row">
+		<div class="col-md-3"></div>
+		<div class="col-md-6" style="border: 2px solid #eee;font-weight:bold">
+			<br>
+			<p>To use MEMOPAGE, You have to Log in!</p>
+			<p><a href="{{url_for('login')}}">Login!</a></p>
+			<p>If you don't have account, then Sign up now!</p>
+			<p><a href="{{url_for('signup')}}">Sign up!</a></p>
+			<br>
+		</div>
+		<div class="col-md-3"></div>
 	</div>
 </div>
 {%else%}
-<div class=memobox>
-	<div class=writebox>
-		<p>This is index page!</p>
-		<p>...and there is nothing to do here</p>
-		<p>Just go to <a href="{{url_for('main')}}">main!</a></p>
-		<br><br><p>그리고 전부 영어지만 제작자는 한국인ㅎ</p>
+<div class="container" align="center">
+	<div class="row">
+		<div class="col-md-3"></div>
+		<div class="col-md-6" style="border: 2px solid #eee;font-weight:bold">
+			<br>
+			<p>This is index page!</p>
+			<p>...and there is nothing to do here</p>
+			<p>Just go to <a href="{{url_for('main')}}">main!</a></p>
+			<br><br><p>made by kor_limes</p>
+			<br>
+		</div>
+		<div class="col-md-3"></div>
 	</div>
 </div>
 {%endif%}
