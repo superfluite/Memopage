@@ -8,6 +8,7 @@ from models import *
 import os
 import sqlite3
 import time
+import json
 
 app=Flask(__name__)
 login_manager=LoginManager()
@@ -130,6 +131,13 @@ def delaccount():
 	db_session.delete(poor_user)
 	db_session.commit()
 	return redirect(url_for('index'))
+	
+@app.route('/api')
+def apihandler():
+	selected_memo=db_session.query(Memo).order_by(desc(Memo.id)).first()
+	jsondata=['text':selected_memo.text,'writetime'selected_memo.writetime]	
+	return jsondata
+	
 	
 @app.teardown_appcontext
 def shutdown_session(exception=None):
